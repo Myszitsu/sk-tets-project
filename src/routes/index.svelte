@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { spy } from '$lib/stores/spy-store.svelte';
 	import { onMount } from 'svelte';
+import H1 from '$lib/ui/h1.svelte';
 
 	onMount(() => {
 		spy.update(items => {
@@ -13,16 +14,16 @@
 	});
 </script>
 
-<header
+<section
 	class="section"
 	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
 	out:fly={{ duration: 400, x: window.innerWidth }}
 >
-	<h1>Some text</h1>
-</header>
+	<H1 title={"HOME"} />
+</section>
 
 <style lang="scss">
-	header {
+	section {
 		display: flex;
 		justify-content: center;
 		align-items: center;

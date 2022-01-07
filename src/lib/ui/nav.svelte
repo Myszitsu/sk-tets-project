@@ -2,26 +2,29 @@
    import { spy } from "$lib/stores/spy-store.svelte";
 </script>
 
-<nav>
-	<ul>
-		<li class:spy={$spy.isHomeActive}><a href="/"><i class="fas fa-home" /></a></li>
-		<li class:spy={$spy.isAboutActive}>
-			<a href="/about"><i class="fas fa-info-circle" /></a>
-		</li>
-		<li class:spy={$spy.isProjectsActive}>
-			<a href="/projects"><i class="fas fa-project-diagram" /></a>
-		</li>
-	</ul>
-</nav>
+<header>
+   <nav>
+      <ul>
+         <li class:spy={$spy.isHomeActive}><a href="/"><i class="fas fa-home" /></a></li>
+         <li class:spy={$spy.isAboutActive}>
+            <a href="/about"><i class="fas fa-info-circle" /></a>
+         </li>
+         <li class:spy={$spy.isProjectsActive}>
+            <a href="/projects"><i class="fas fa-project-diagram" /></a>
+         </li>
+      </ul>
+   </nav>
+</header>
 
 <style lang="scss">
-	nav {
+	header {
 		position: fixed;
 		top: 1rem;
 		display: flex;
 		justify-content: center;
 		align-items: center;
 		width: 90vw;
+      max-width: 80rem;
 		height: 4rem;
 		background-color: var(--secondary-bg-color);
 		z-index: 100;

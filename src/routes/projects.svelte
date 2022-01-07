@@ -1,8 +1,9 @@
 <script lang="ts">
-	import Card from '$lib/ui/card.svelte';
+	import ProjectGrid from '$lib/ui/project-grid.svelte';
 	import { fly } from 'svelte/transition';
 	import { spy } from '$lib/stores/spy-store.svelte';
 	import { onMount } from 'svelte';
+import H1 from '$lib/ui/h1.svelte';
 
 	onMount(() => {
 		spy.update(items => {
@@ -19,33 +20,45 @@
 	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
 	out:fly={{ duration: 400, x: window.innerWidth }}
 >
-	<h1>Some section</h1>
-	<div class="grid">
-		<Card />
-		<Card />
-		<Card />
-	</div>
+	<H1 title={"MY PROJECTS"}/>
+	<main class="grid">
+		<ProjectGrid />
+		<ProjectGrid />
+		<ProjectGrid />
+		<ProjectGrid />
+	</main>
 </section>
 
 <style lang="scss">
 	section {
 		display: flex;
-		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-		z-index: 10;
 	}
 
 	.grid {
 		width: 100%;
-		padding: 1rem;
+		padding-inline: .7rem;
+      margin-top: .5rem;
+      margin-bottom: 1.5rem;
 		display: grid;
 		grid-template-rows: auto;
 		grid-template-columns: 1fr;
-		gap: 1rem;
+		gap: 1.4rem;
 	}
 
-	@media (min-width: 62rem) {
+	@media (min-width: 48rem) {
+		.grid {
+			grid-template-columns: repeat(2, 1fr);
+         padding-inline: 1.5rem;
+		}
+	}
+	// @media (min-width: 62rem) {
+	// 	.grid {
+	// 		grid-template-columns: repeat(3, 1fr);
+	// 	}
+	// }
+	@media (min-width: 70rem) {
 		.grid {
 			grid-template-columns: repeat(3, 1fr);
 		}

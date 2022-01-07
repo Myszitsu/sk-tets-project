@@ -2,6 +2,7 @@
 	import { fly } from 'svelte/transition';
 	import { spy } from '$lib/stores/spy-store.svelte';
 	import { onMount } from 'svelte';
+   import H1 from '$lib/ui/h1.svelte';
 
 	onMount(() => {
 		spy.update(items => {
@@ -18,7 +19,7 @@
 	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
 	out:fly={{ duration: 400, x: window.innerWidth }}
 >
-	<h1>Some section</h1>
+	<H1 title={"ABOUT"} />
 </section>
 
 <style lang="scss">
