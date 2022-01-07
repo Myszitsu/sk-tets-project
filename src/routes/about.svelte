@@ -6,23 +6,23 @@
 	onMount(() => {
 		spy.update(items => {
 			for (const key in items) {
-				items[key] = key === 'isHomeActive' ? true : false;
+				items[key] = key === 'isAboutActive' ? true : false;
 			}
 			return Object.assign(items);
 		});
 	});
 </script>
 
-<header
+<section
 	class="section"
 	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
 	out:fly={{ duration: 400, x: window.innerWidth }}
 >
-	<h1>Some text</h1>
-</header>
+	<h1>Some section</h1>
+</section>
 
 <style lang="scss">
-	header {
+	section {
 		display: flex;
 		justify-content: center;
 		align-items: center;

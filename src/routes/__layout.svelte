@@ -4,4 +4,5 @@
 </script>
 
 <Nav />
-<slot></slot>
+<svelte:body style="min-height: ${window.innerHeight}" />
+   <slot></slot>   
