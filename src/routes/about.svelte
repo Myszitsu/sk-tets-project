@@ -42,7 +42,7 @@
 				<div class="icons">
 					<i class="fab fa-html5" aria-label="html5" />
 					<i class="fab fa-css3-alt" aria-label="css3" />
-					<svg
+					<svg class="typescript"
 					aria-label="typescript"
 						xmlns="http://www.w3.org/2000/svg"
 						width="400px"
@@ -66,7 +66,7 @@
 			<main slot="main">
 				<p>
 					I have good understanding of the basics of HTML5, CSS3, JavaScript &
-					TypeScirpt, with some more advanced concepts like closures, testing or
+					TypeScript, with some more advanced concepts like closures, testing or
 					Web Components & Stencil.js on the way.
 				</p>
 				<p>
@@ -101,7 +101,7 @@
 			</div>
 			<main slot="main">
 				<p>
-					I have some experience with module bundlers like Webpack 5+, rollup 5+
+					I have some experience with module bundlers like Webpack 5+, rollup 3+
 					& gulp 4. When constructing a barebone project, Webpack would be my
 					bundler of choice.
 				</p>
@@ -149,7 +149,7 @@
 			<main slot="main">
 				<p>Please keep in mind that this website is under construction. It was built with SvelteKit and deployed via Vercel.</p>
 				<p>You can visit this particular repository by clicking GitHub icon on this card. Commits are not regular nor very descriptive since I was eager to deploy this website in under 3 days. I will do my best to be more attentive with future changes. </p>
-				<p>Check out my Codepen profile by click the icon.</p>
+				<p>Check out my Codepen profile by clicking the icon.</p>
 			</main>
 		</AboutCard>
 	</div>
@@ -164,6 +164,7 @@
 		display: grid;
 		grid-template-rows: auto;
 		grid-template-columns: 1fr;
+		justify-content: center;
 		gap: 1.4rem;
 	}
 
@@ -196,6 +197,10 @@
 					transform: scale(1.1);
 					color: var(--main-bg-color);
 				}
+			}
+
+			.typescript {
+				border-radius: .3rem;
 			}
 
 			a {

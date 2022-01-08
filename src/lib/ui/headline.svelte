@@ -1,12 +1,13 @@
 <script lang="ts">
    export let title: string;
    export let headlineType: 'h1' | 'h2' | 'h3' = 'h1';
+   export let mode: 'light' | 'dark' = 'light';
 </script>
 
 {#if headlineType === 'h1'}
-<h1 class="headline h2">{title}</h1>
+<h1 class="headline" class:light={mode === 'light'}>{title}</h1>
 {:else if headlineType === 'h2'}
-<h2 class="headline h2">{title}</h2>
+<h2 class="headline" class:light={mode === 'light'}>{title}</h2>
 {:else}
 <h3 class="headline">{title}</h3>
 {/if}
@@ -31,7 +32,7 @@
 
    }
 
-   .h2 {
+   .light {
       color: var(--main-bg-color);
 
       &::before {

@@ -1,0 +1,36 @@
+<script lang="ts">
+	export let href: string;
+	export let content: string;
+	export let blank: boolean = false;
+	export let light: boolean = false;
+   export let width: string | undefined = undefined;
+</script>
+
+{#if blank}
+	<a style="width: {width ?? 'auto'}" class:light={light} {href} target="__blank">{content}</a>
+{:else}
+	<a style="width: {width ?? 'auto'}" class:light={light} {href}>{content}</a>
+{/if}
+
+<style lang="scss">
+	a {
+		display: inline-block;
+		padding: 0.6rem 1.2rem;
+		font-weight: bold;
+		color: var(--main-bg-color);
+		background-color: var(--secondary-dark);
+		text-decoration: none;
+		border-radius: 0.3rem;
+		text-align: center;
+		transition: transform 0.3s, background-color 0.3s;
+
+		&:hover {
+			background-color: #d64045;
+		}
+	}
+
+	.light {
+      border: .13rem solid var(--main-bg-color);
+		background-color: transparent;
+	}
+</style>
