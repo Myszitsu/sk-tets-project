@@ -1,19 +1,32 @@
 <script lang="ts">
-   import { spy } from "$lib/stores/spy-store.svelte";
+	import { spy } from '$lib/stores/spy-store.svelte';
+	let header: HTMLElement;
+
+	let hasScrolled: boolean;
 </script>
 
-<header>
-   <nav>
-      <ul>
-         <li class:spy={$spy.isHomeActive}><a href="/"><i class="fas fa-home" /></a></li>
-         <li class:spy={$spy.isAboutActive}>
-            <a href="/about"><i class="fas fa-info-circle" /></a>
-         </li>
-         <li class:spy={$spy.isProjectsActive}>
-            <a href="/projects"><i class="fas fa-project-diagram" /></a>
-         </li>
-      </ul>
-   </nav>
+<svelte:window
+	on:scroll={() =>
+		window.scrollY > header.clientHeight
+			? (hasScrolled = true)
+			: (hasScrolled = false)}
+/>
+<header bind:this={header} class:strechted={hasScrolled}>
+	<nav>
+		<ul>
+			<li class:spy={$spy.isHomeActive}>
+				<a href="/" aria-label="home"><i class="fas fa-home" /></a>
+			</li>
+			<li class:spy={$spy.isAboutActive}>
+				<a href="/about" aria-label="about"><i class="fas fa-info-circle" /></a>
+			</li>
+			<li class:spy={$spy.isProjectsActive}>
+				<a href="/projects" aria-label="projects"
+					><i class="fas fa-project-diagram" /></a
+				>
+			</li>
+		</ul>
+	</nav>
 </header>
 
 <style lang="scss">
@@ -23,12 +36,13 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		width: 90vw;
-      max-width: 80rem;
+		// width: 90vw;
+		width: clamp(200px, 90vw, 80rem);
 		height: 4rem;
-		background-color: var(--secondary-bg-color);
+		background-color: var(--secondary-dark);
 		z-index: 100;
-		border: 1px solid var(--main-bg-color);
+		border: 2px solid var(--main-bg-color);
+		transition: border 0.3s, background-color 0.3s, transform 0.3s, width 0.3s;
 	}
 
 	ul {
@@ -45,21 +59,33 @@
 
 		i {
 			font-size: 1.4rem;
-			color: var(--secondary-dark);
+			color: var(--secondary-bg-color);
 			transition: color 0.2s;
-         padding: 1rem;
+			padding: 1rem;
 
 			&:hover {
 				color: var(--main-bg-color);
 			}
 		}
 	}
+	
+
+	.strechted {
+		transform: translateY(-1rem);
+		width: 100%;
+	}
+
+	// @media (min-width: 80rem) {
+	// 	header {
+	// 		width: 80rem;
+	// 	}
+	// }
 
 	.spy {
-      i{
-                  color: var(--main-bg-color);
-         border-bottom: 3px solid var(--main-bg-color);
-
-      }
+		i {
+			position: relative;
+			color: var(--main-bg-color);
+			border-bottom: 2px solid var(--main-bg-color);
+		}
 	}
 </style>

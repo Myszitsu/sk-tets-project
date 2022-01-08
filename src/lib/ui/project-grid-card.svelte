@@ -1,17 +1,17 @@
 <script lang="ts">
 import Card from "./card.svelte";
-
+import Headline from "./headline.svelte";
 
 </script>
 <Card>
    <header>
-      <h2>Project Title</h2>
+      <Headline title={"Snake"} headlineType="h2" />
       <img src="https://cdn.pixabay.com/photo/2020/06/28/05/30/jesus-5347929_960_720.jpg" alt="snake graphic">
    </header>
    <main>
-      <div class="description">
+      <section class="description">
          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas quae quam vel laudantium id repellendus adipisci ipsum! Voluptates illo eos delectus debitis quam totam explicabo voluptatem. Accusamus ipsam error fugiat.</p>
-      </div>
+      </section>
    </main>
    <footer>
       <a href="/">OPEN</a>
@@ -19,17 +19,16 @@ import Card from "./card.svelte";
 </Card>
 
 <style lang="scss">
+
    img {
          width: 100%;
       }
 
       header {
+         display: flex;
+         flex-direction: column;
          text-align: center;
-
-         h2 {
-            padding: 0.5rem;
-            padding-bottom: 1rem;
-         }
+         background-color: var(--secondary-dark);
       }
 
       main {
@@ -52,10 +51,15 @@ import Card from "./card.svelte";
             padding: 0.6rem 1.2rem;
             font-weight: bold;
             color: var(--main-bg-color);
-            background-color: var(--secondary-bg-color);
+            background-color: var(--secondary-dark);
             text-decoration: none;
             border-radius: .3rem;
             text-align: center;
+            transition: transform .3s, background-color .3s;
+
+            &:hover {
+               background-color: #d64045;
+            }
          }
       }
 </style>

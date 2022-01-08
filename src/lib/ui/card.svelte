@@ -10,12 +10,11 @@
    .card {
       grid-column: span 1;
       display: flex;
-      justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 1rem 0;
+      padding-bottom: 1rem;
       width: 100%;
       background-color: #FFDCCC;
-      border: 2px solid var(--secondary-bg-color);
+      border: 2px solid var(--main-bg-color);
    }
 </style>
