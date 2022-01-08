@@ -159,12 +159,25 @@
 				'h1 h1'
 				'img info';
 			.content {
+				position: relative;
+				align-self: center;
 				height: 100%;
 				color: black;
 				justify-content: space-evenly;
 				background-color: transparent;
 				p {
 					grid-area: info;
+				}
+
+				&::before {
+					content: '';
+					position: absolute;
+					width: .2rem;
+					height: 90%;
+					left: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					background-color: var(--secondary-dark);
 				}
 			}
 		}
@@ -173,10 +186,6 @@
 			padding-block: 1rem;
 			background-color: var(--secondary-dark);
 			grid-area: h1;
-		}
-
-		img {
-			border-right: .2rem solid var(--secondary-dark)
 		}
 	}
 
@@ -189,6 +198,7 @@
 			}
 			img {
 			padding: 2.5rem;
+			width: 80%;
 		}
 		}		
 	}
