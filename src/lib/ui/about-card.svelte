@@ -22,8 +22,10 @@
 		display: flex;
 		flex-direction: column;
 		text-align: center;
+		justify-content: center;
 		background-color: var(--secondary-dark);
 		width: 100%;
+		min-height: 17.1rem;
 	}
 
 	main {

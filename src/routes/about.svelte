@@ -217,7 +217,7 @@
 
 		.fa-landmark, .fa-tools {
 			font-size: 5rem;
-			margin-block: 0.5rem;
+			margin-block: .863rem;
 		}
 	}
 
