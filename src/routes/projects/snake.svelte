@@ -2,27 +2,13 @@
 	import { onMount } from 'svelte';
 	import { SnakeGame } from '$lib/projects/snake.svelte';
 	import MediaQuery from '$lib/helpers/media-query.svelte';
+import { fly } from 'svelte/transition';
 	let frame: HTMLDivElement;
 	let game: SnakeGame;
-	let appleCount: number = 0;
-
-	$: if (game?.movement?.status) {
-		switch (game.movement.status) {
-			case 'apple':
-				appleCount++;
-				game.movement.status = 'none';
-				break;
-			case 'snake':
-				appleCount = 0;
-				game.reset();
-				game.movement.status = 'none';
-				break;
-		}
-	}
 
 	onMount(() => {
 		game = new SnakeGame(frame);
-		game.movement.movementSpeed = 75;
+		game.movement.movementSpeed = 60;
 	});
 
 	function movementHandler(event: KeyboardEvent | Event) {
@@ -35,13 +21,13 @@
 				game.movement.isMovementFinished)
 		) {
 			game.movement.isMovementFinished = false;
-			game.movement.movementHandler(event);
+			game.movement.movementHandler(event, );
 		}
 	}
 
 	function resizeSnake() {
 		game.frame.setSize();
-		game.reset();
+		game.movement.resetGame();
 	}
 </script>
 
@@ -49,7 +35,8 @@
    <title>Snake</title>
 </svelte:head>
 <svelte:window on:resize={resizeSnake} on:keydown={movementHandler} />
-<section class="section section--snake">
+<section in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
+out:fly={{ duration: 400, x: window.innerWidth }} class="section section--snake">
 	<header>
 		<button
 			on:click={() => {
@@ -67,13 +54,13 @@
 		>
 		<button
 			on:click={() => {
-				game.reset();
+				game.movement.resetGame();
 			}}><i class="fas fa-redo" /></button
 		>
 	</header>
 	<main>
 		<div bind:this={frame} class="frame">
-			<h2>APPLES: {appleCount}</h2>
+			<h2 id="h2">APPLES: 0</h2>
 			<div id="apple" />
 			<div id="head" />
 		</div>
@@ -208,6 +195,7 @@
 		}
 
 		footer {
+         justify-content: space-between;
 			.controls {
 				width: 20%;
 				flex-direction: column;

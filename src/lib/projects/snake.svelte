@@ -7,8 +7,8 @@
 
 		setWidth() {
 			this.width = 0;
-         const remSize = +window.getComputedStyle(document.body).fontSize.slice(0, -2)       
-			while (this.width + 30 <= window.innerWidth * 0.9 && this.width + 30 <= (remSize * 80)) {
+         const remSize = +window.getComputedStyle(document.body).fontSize.slice(0, -2) 
+			while (this.width + 30 <= window.innerWidth * 0.9 && this.width + 60 <= (remSize * 80)) {
 				this.width += 30;
 			}
 			this.frame.style.width = `${this.width}px`;
@@ -95,6 +95,7 @@
 	}
 
 	class Apple {
+      appleCount: number = 0;
 		fruit: HTMLDivElement;
 		constructor(
 			public frame: SnakeFrame,
@@ -116,6 +117,15 @@
 				}px, ${Math.floor(Math.random() * (this.frame.height / 15)) * 15}px)`;
 			} while (snakeTranslateStyles.includes(this.fruit.style.transform));
 		}
+
+      setAppleCount(reset?: boolean) {
+         if (reset) {
+            this.appleCount = 0
+            this.frameDiv.querySelector('#h2').textContent = 'APPLES : 0'
+            return
+         }
+         this.frameDiv.querySelector('#h2').textContent = `APPLES : ${++this.appleCount}`
+      }
 	}
 
 	class SnakeMovement {
@@ -123,7 +133,6 @@
 		direction: number = 1;
 		interval: any;
 		eventIdentifier = 'ArrowRight';
-		status: 'apple' | 'snake' | 'none' = 'none';
       movementSpeed: number = 50
 
 		constructor(
@@ -132,10 +141,18 @@
 			public apple: Apple
 		) {}
 
-		reset() {
+      resetGame() {
+			this.resetMovement();
+			setTimeout(() => {
+				this.snake.reset();
+				this.apple.setNewPosition();
+            this.apple.setAppleCount(true)
+			}, this.movementSpeed);
+		}
+
+		resetMovement() {
 			clearInterval(this.interval);
 			this.eventIdentifier = 'ArrowRight';
-			this.status = 'none';
 			this.direction = 1;
 			setTimeout(() => {
 				this.isMovementFinished = true;
@@ -186,7 +203,7 @@
 				) {
 					this.snake.grow();
 					this.apple.setNewPosition();
-					this.status = 'apple';
+               this.apple.setAppleCount()
 				}
 
 				for (let i = this.snake.body.length - 1; i > 1; i--) {
@@ -194,10 +211,11 @@
 						this.snake.body[i].style.transform ===
 						this.snake.head.style.transform
 					) {
-						this.status = 'snake';
+                  this.resetGame()
 					}
 				}
 				this.isMovementFinished = true;
+            return this.apple.appleCount
 			}, this.movementSpeed);
 		}
 
@@ -285,14 +303,6 @@
 			this.apple = new Apple(this.frame, this.snake, frameDiv);
 			this.apple.setNewPosition();
 			this.movement = new SnakeMovement(this.frame, this.snake, this.apple);
-		}
-
-		reset() {
-			this.movement.reset();
-			setTimeout(() => {
-				this.snake.reset();
-				this.apple.setNewPosition();
-			}, this.movement.movementSpeed);
 		}
 	}
 </script>

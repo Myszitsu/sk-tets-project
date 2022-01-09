@@ -30,7 +30,7 @@ onDestroy(() => {
    <title>Projects</title>
 </svelte:head>
 <section
-	class="section s"
+	class="section"
 	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
 	out:fly={{ duration: 400, x: window.innerWidth }}
 >
@@ -46,14 +46,8 @@ onDestroy(() => {
 </section>
 
 <style lang="scss">
-	.s {
-		border: none;
-		background: transparent;
-	}
-
 	.grid {
 		width: 100%;
-		// padding-inline: .5rem;
 		margin-top: 0.5rem;
 		margin-block: 1.5rem;
 		display: grid;
