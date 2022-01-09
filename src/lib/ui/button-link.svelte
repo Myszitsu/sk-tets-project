@@ -15,7 +15,7 @@
 <style lang="scss">
 	a {
 		display: inline-block;
-		padding: 0.6rem 1.2rem;
+		padding: 0.7rem 1.2rem;
 		font-weight: bold;
 		color: var(--main-bg-color);
 		background-color: var(--secondary-dark);

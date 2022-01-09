@@ -1,7 +1,7 @@
 :root {
-   --main-bg-color: rgb(255, 249, 235);
-   --secondary-bg-color: rgb(224, 110, 108);
-   --secondary-dark: rgb(163, 51, 57);
+   --main-bg-color: #fff9eb;
+   --secondary-bg-color: #e06e6c;
+   --secondary-dark: #a33339;
    --secondary-light: #FFDCCC;
    --secondary-blue: #425b71;
 }
@@ -15,7 +15,6 @@
 }
 
 body {
-	// font-family: 'Monoton', cursive;
 	font-family: 'Montserrat', sans-serif;
    background-color: #425b71;
    overflow-x: hidden;
@@ -23,7 +22,7 @@ body {
    display: flex;
    justify-content: center;
    align-items: center;
-   font-size: clamp(1rem, 0.9475rem + 0.2333vw, 1.07rem);
+   font-size: clamp(1rem, 0.9250rem + 0.3333vw, 1.1rem);
 }
 
 #svelte {
@@ -48,6 +47,35 @@ body {
    width: 90vw;
    max-width: 80rem;
    min-height: 80%;
+}
+
+.frame {
+	grid-row: span 1;
+	position: relative;
+	width: 100%;
+	height: 100%;
+   border-radius: 2px;
+   background-color: var(--secondary-bg-color);
+}
+
+.snake {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 15px;
+	width: 15px;
+	background-color: var(--main-bg-color);
+   border-radius: 1px;
+}
+.apple {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 15px;
+	width: 15px;
+	background-color: greenyellow;
+	box-shadow: inset 0 0 5px green;
+	border-radius: 2px;
 }
 
 @media (min-width: 36rem) {

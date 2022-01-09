@@ -14,7 +14,7 @@ import Headline from "./headline.svelte";
       </section>
    </main>
    <footer>
-      <a href="/">OPEN</a>
+      <a href="/projects/snake">OPEN</a>
    </footer>
 </Card>
 

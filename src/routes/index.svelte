@@ -42,45 +42,42 @@
 		</MediaQuery>
 		<MediaQuery query="(max-width: 48rem)" let:matches>
 			{#if matches}
-			<ul>
-				<li>
-					<ButtonLink
-						width={'100%'}
-						light={true}
-						content={'ABOUT'}
-						href="/about"
-					/>
-				</li>
-				<li>
-					<ButtonLink
-						width={'100%'}
-						light={true}
-						content={'PROJECTS'}
-						href="/projects"
-					/>
-				</li>
-			</ul>
+				<ul>
+					<li>
+						<ButtonLink
+							width={'100%'}
+							light={true}
+							content={'ABOUT'}
+							href="/about"
+						/>
+					</li>
+					<li>
+						<ButtonLink
+							width={'100%'}
+							light={true}
+							content={'PROJECTS'}
+							href="/projects"
+						/>
+					</li>
+				</ul>
 			{/if}</MediaQuery
 		>
 		<MediaQuery query="(min-width: 48rem)" let:matches>
 			{#if matches}
-			<p>I've taken multiple courses and have been learning frontend technologies since April 2021. I am eager to learn from anyone that is willing to teach and hopeful to go commercial in the forseeable future.</p>
-			<ul>
-				<li>
-					<ButtonLink
-						width={'100%'}
-						content={'ABOUT'}
-						href="/about"
-					/>
-				</li>
-				<li>
-					<ButtonLink
-						width={'100%'}
-						content={'PROJECTS'}
-						href="/projects"
-					/>
-				</li>
-			</ul>
+				<p>
+					I've taken multiple courses and have been learning frontend
+					technologies since April 2021. I am eager to learn from anyone that is
+					willing to teach and hopeful to go commercial in the forseeable
+					future.
+				</p>
+				<ul>
+					<li>
+						<ButtonLink width={'100%'} content={'ABOUT'} href="/about" />
+					</li>
+					<li>
+						<ButtonLink width={'100%'} content={'PROJECTS'} href="/projects" />
+					</li>
+				</ul>
 			{/if}</MediaQuery
 		>
 	</div>
@@ -172,7 +169,7 @@
 				&::before {
 					content: '';
 					position: absolute;
-					width: .2rem;
+					width: 0.2rem;
 					height: 90%;
 					left: 0;
 					top: 50%;
@@ -193,13 +190,14 @@
 		.home {
 			.content {
 				p {
-					 font-size: 1.4rem;
+					font-size: 1.4rem;
+					padding-inline: 2rem;
 				}
 			}
 			img {
-			padding: 2.5rem;
-			width: 80%;
+				padding: 2.5rem;
+				width: 80%;
+			}
 		}
-		}		
 	}
 </style>
