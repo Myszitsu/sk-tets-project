@@ -45,6 +45,9 @@
 	}
 </script>
 
+<svelte:head>
+   <title>Snake</title>
+</svelte:head>
 <svelte:window on:resize={resizeSnake} on:keydown={movementHandler} />
 <section class="section section--snake">
 	<header>
@@ -80,12 +83,12 @@
 			<button
 				on:click={movementHandler}
 				class="arrow arrow--left"
-				data-event="ArrowLeft"><i class="fas fa-arrow-left" /></button
+				data-event="ArrowLeft" aria-label="Arrow Left"><i class="fas fa-arrow-left" /></button
 			>
 			<button
 				on:click={movementHandler}
 				class="arrow arrow--down"
-				data-event="ArrowDown"><i class="fas fa-arrow-down" /></button
+				data-event="ArrowDown" aria-label="Arrow Down"><i class="fas fa-arrow-down" /></button
 			>
 		</div>
 		<MediaQuery query="(min-width: 40rem)" let:matches>
@@ -97,12 +100,12 @@
 			<button
 				on:click={movementHandler}
 				class="arrow arrow--up"
-				data-event="ArrowUp"><i class="fas fa-arrow-up" /></button
+				data-event="ArrowUp" aria-label="Arrow Up"><i class="fas fa-arrow-up" /></button
 			>
 			<button
 				on:click={movementHandler}
 				class="arrow arrow--right"
-				data-event="ArrowRight"><i class="fas fa-arrow-right" /></button
+				data-event="ArrowRight" aria-label="Arrow Right"><i class="fas fa-arrow-right" /></button
 			>
 		</div>
 	</footer>
@@ -127,13 +130,13 @@
 		gap: 10vw;
 
 		button {
-			width: clamp(20px, 15vw, 50px);
+			width: clamp(20px, 15vw, 30px);
 			aspect-ratio: 1 / 1;
 			border: none;
 			background-color: transparent;
 
 			i {
-				font-size: clamp(15px, 8vw, 40px);
+				font-size: clamp(15px, 8vw, 30px);
 			}
 		}
 	}
@@ -192,10 +195,14 @@
 		color: var(--secondary-light);
 	}
 
+   button {
+      cursor: pointer;
+   }
+
 	@media (min-width: 40rem) {
 		.info {
 			text-align: center;
-			font-size: clamp(20px, 4vw, 40px);
+			font-size: clamp(20px, 4vw, 32px);
 			font-weight: 400;
 			letter-spacing: 0.1rem;
 		}

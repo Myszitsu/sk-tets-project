@@ -2,8 +2,17 @@
 	import ProjectGrid from '$lib/ui/project-grid-card.svelte';
 	import { fly } from 'svelte/transition';
 	import { spy } from '$lib/stores/spy-store.svelte';
-	import { onMount } from 'svelte';
 	import Headline from '$lib/ui/headline.svelte';
+	import { onDestroy, onMount } from 'svelte';
+
+onDestroy(() => {
+		spy.update(items => {
+			for (const key in items) {
+				items[key] = false;
+			}
+			return Object.assign(items);
+		});
+	})	
 
 	onMount(() => {
 		spy.update(items => {
@@ -13,8 +22,13 @@
 			return Object.assign(items);
 		});
 	});
+
+	
 </script>
 
+<svelte:head>
+   <title>Projects</title>
+</svelte:head>
 <section
 	class="section s"
 	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
@@ -22,7 +36,9 @@
 >
 	<Headline title={'MY PROJECTS'} />
 	<main class="grid">
-		<ProjectGrid />
+		<ProjectGrid title={'Snake'} imgAlt={'snake ilustration'} href={'/projects/snake'} githubHref={'https://github.com/Myszitsu/snake-typescript-oop'} imgURL='https://cdn.pixabay.com/photo/2020/06/28/05/30/jesus-5347929_960_720.jpg'>
+			This is a snake minigame written in TypeScript with Class structure. The component is scalable and can use either arrows keys or buttons to navigate. Follow the link below for it's own GitHub's repository.
+		</ProjectGrid>
 		<ProjectGrid />
 		<ProjectGrid />
 		<ProjectGrid />

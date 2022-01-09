@@ -7,7 +7,8 @@
 
 		setWidth() {
 			this.width = 0;
-			while (this.width + 30 <= window.innerWidth * 0.9) {
+         const remSize = +window.getComputedStyle(document.body).fontSize.slice(0, -2)       
+			while (this.width + 30 <= window.innerWidth * 0.9 && this.width + 30 <= (remSize * 80)) {
 				this.width += 30;
 			}
 			this.frame.style.width = `${this.width}px`;

@@ -16,6 +16,9 @@
 	});
 </script>
 
+<svelte:head>
+   <title>Home</title>
+</svelte:head>
 <section
 	class="section home"
 	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
@@ -190,7 +193,7 @@
 		.home {
 			.content {
 				p {
-					font-size: 1.4rem;
+					font-size: 1.3rem;
 					padding-inline: 2rem;
 				}
 			}

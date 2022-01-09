@@ -15,6 +15,9 @@
 	});
 </script>
 
+<svelte:head>
+   <title>About</title>
+</svelte:head>
 <section
 	class="section"
 	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
@@ -147,7 +150,7 @@
 				</div>
 			</div>
 			<main slot="main">
-				<p>Please keep in mind that this website is under construction. It was built with SvelteKit and deployed via Vercel.</p>
+				<p>Keep in mind that this website is under construction. It was built with SvelteKit and deployed via Vercel.</p>
 				<p>You can visit this particular repository by clicking GitHub icon on this card. Commits are not regular nor very descriptive since I was eager to deploy this website in under 3 days. I will do my best to be more attentive with future changes. </p>
 				<p>Check out my Codepen profile by clicking the icon.</p>
 			</main>

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../styles/global.scss';
+	import Nav from '$lib/ui/nav.svelte';
 	import { onMount } from 'svelte';
-import Nav from '$lib/nav.svelte';
 
 	onMount(() => {
 		const svelteContainer = window.document.getElementById('svelte');
