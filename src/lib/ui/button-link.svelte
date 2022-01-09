@@ -8,9 +8,9 @@
 </script>
 
 {#if blank}
-	<a style="width: {width ?? 'auto'}" class:outline={outline} class:light={light} {href} target="__blank">{content}</a>
+	<a style="width: {width ?? 'auto'}" class:outline={outline} class:light={light} href={href ? href : '/'} target="__blank">{content}</a>
 {:else}
-	<a style="width: {width ?? 'auto'}" class:outline={outline} class:light={light} {href}>{content}</a>
+	<a style="width: {width ?? 'auto'}" class:outline={outline} class:light={light} href={href ? href : '/'}>{content}</a>
 {/if}
 
 <style lang="scss">

@@ -32,7 +32,7 @@
 	</main>
 	<footer>
 		<ButtonLink content={'OPEN'} {href} />
-		<ButtonLink content={'Github'} href="{githubHref}" blank={true} outline={true} />
+		<ButtonLink content={'Github'} href="{githubHref}" blank={githubHref !== '/' ? true : false} outline={true} />
 	</footer>
 </Card>
 
