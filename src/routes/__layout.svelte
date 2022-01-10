@@ -3,12 +3,15 @@
 	import Nav from '$lib/ui/nav.svelte';
 	import { onMount } from 'svelte';
 
-	onMount(() => {
+	onMount(setContainerSize);
+
+	function setContainerSize() {
 		const svelteContainer = window.document.getElementById('svelte');
 		svelteContainer.style.minHeight = `${window.innerHeight}px`;
-	});
+	}
 </script>
 
+<svelte:window on:resize="{setContainerSize}" />
 <Nav />
 <main class="main">
 	<slot />
