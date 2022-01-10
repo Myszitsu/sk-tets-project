@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-   <title>Home</title>
+	<title>Home</title>
 </svelte:head>
 <section
 	class="section home"
@@ -27,24 +27,36 @@
 	<MediaQuery query="(min-width: 48rem)" let:matches>
 		{#if matches}
 			<h1 class="h1">HELLO WORLD</h1>
-		{/if}</MediaQuery
-	>
-	<div class="content">
-		<MediaQuery query="(max-width: 48rem)" let:matches>
-			{#if matches}
-				<h1 class="h1">HELLO WORLD</h1>
-			{/if}</MediaQuery
-		>
-		<MediaQuery query="(min-width: 36rem)" let:matches>
-			{#if matches}
+			<div class="content">
 				<p>
 					I’m an amateur web developer looking for an oportunity to start a
 					professional career. Below you will find a few bits about me.
 				</p>
-			{/if}
-		</MediaQuery>
-		<MediaQuery query="(max-width: 48rem)" let:matches>
-			{#if matches}
+				<p>
+					I've taken multiple courses and have been learning frontend
+					technologies since April 2021. I am eager to learn from anyone that is
+					willing to teach and hopeful to go commercial in the forseeable
+					future.
+				</p>
+				<ul>
+					<li>
+						<ButtonLink width={'100%'} content={'ABOUT'} href="/about" />
+					</li>
+					<li>
+						<ButtonLink width={'100%'} content={'PROJECTS'} href="/projects" />
+					</li>
+				</ul>
+			</div>
+		{/if}
+	</MediaQuery>
+	<MediaQuery query="(min-width: 36rem) and (max-width: 48rem)" let:matches>
+		{#if matches}
+			<div class="content">
+				<h1 class="h1">HELLO WORLD</h1>
+				<p>
+					I’m an amateur web developer looking for an oportunity to start a
+					professional career. Below you will find a few bits about me.
+				</p>
 				<ul>
 					<li>
 						<ButtonLink
@@ -63,27 +75,34 @@
 						/>
 					</li>
 				</ul>
-			{/if}</MediaQuery
-		>
-		<MediaQuery query="(min-width: 48rem)" let:matches>
-			{#if matches}
-				<p>
-					I've taken multiple courses and have been learning frontend
-					technologies since April 2021. I am eager to learn from anyone that is
-					willing to teach and hopeful to go commercial in the forseeable
-					future.
-				</p>
+			</div>
+		{/if}
+	</MediaQuery>
+	<MediaQuery query="(max-width: 36rem)" let:matches>
+		{#if matches}
+			<div class="content">
+				<h1 class="h1">HELLO WORLD</h1>
 				<ul>
 					<li>
-						<ButtonLink width={'100%'} content={'ABOUT'} href="/about" />
+						<ButtonLink
+							width={'100%'}
+							light={true}
+							content={'ABOUT'}
+							href="/about"
+						/>
 					</li>
 					<li>
-						<ButtonLink width={'100%'} content={'PROJECTS'} href="/projects" />
+						<ButtonLink
+							width={'100%'}
+							light={true}
+							content={'PROJECTS'}
+							href="/projects"
+						/>
 					</li>
 				</ul>
-			{/if}</MediaQuery
-		>
-	</div>
+			</div>
+		{/if}
+	</MediaQuery>
 	<img src="portrait-svelte.png" alt="prtrait graphic" />
 </section>
 
