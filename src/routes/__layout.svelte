@@ -1,21 +1,21 @@
 <script lang="ts">
 	import '../styles/global.scss';
 	import Nav from '$lib/ui/nav.svelte';
-	import { onMount } from 'svelte';
+	import { beforeUpdate, onMount } from 'svelte';
+	let main: HTMLElement
 
 	onMount(() => {
 		setContainerSize()
 	});
 
-	function setContainerSize(event? : Event) {
-		const svelteContainer = window.document.getElementById('svelte');
-		svelteContainer.style.minHeight = `${window.innerHeight}px`;
+	function setContainerSize() {
+		main.style.minHeight = `${window.innerHeight}px`;
 	}
 </script>
 
 <svelte:window on:resize="{setContainerSize}"/>
 <Nav />
-<main class="main">
+<main bind:this={main} class="main">
 	<slot />
 </main>
 
