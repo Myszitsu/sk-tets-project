@@ -132,8 +132,12 @@
 		isMovementFinished = true;
 		direction: number = 1;
 		interval: any;
-		eventIdentifier = 'ArrowRight';
+		eventIdentifier = '';
       movementSpeed: number = 50
+		wasXUpdated: boolean = false;
+		wasYUpdated: boolean = false;
+		isPaused: boolean = false;
+		updateDirection: number = 0
 
 		constructor(
 			public frame: SnakeFrame,
@@ -152,14 +156,18 @@
 
 		resetMovement() {
 			clearInterval(this.interval);
-			this.eventIdentifier = 'ArrowRight';
+			this.eventIdentifier = '';
 			this.direction = 1;
+			this.wasXUpdated = false;
+			this.wasYUpdated = false;
+			this.updateDirection = 0
 			setTimeout(() => {
 				this.isMovementFinished = true;
 			}, this.movementSpeed);
 		}
 
 		pause() {
+			this.isPaused = true
 			clearInterval(this.interval);
 			setTimeout(() => {
 				this.isMovementFinished = true;
@@ -169,11 +177,13 @@
 		play() {
 			this.pause();
 			setTimeout(() => {
+				this.eventIdentifier = this.eventIdentifier || 'ArrowRight'
 				this.movementHandler();
 			}, this.movementSpeed);
 		}
 
 		movementHandler(event?: KeyboardEvent | Event) {
+			this.isPaused = false
 			if (event) {
 				this.setDirection(event);
 				clearInterval(this.interval);
@@ -211,6 +221,9 @@
 						this.snake.body[i].style.transform ===
 						this.snake.head.style.transform
 					) {
+						this.snake.body.forEach((s, idx) => {
+							console.log(idx, this.snake.getPosition(s))
+						})
                   this.resetGame()
 					}
 				}
@@ -244,8 +257,8 @@
 			const position = this.snake.getPosition(this.snake.head);
 			if (
 				this.snake.body.length > 1 &&
-				position.y + 15 * this.direction ===
-					this.snake.getPosition(this.snake.body[1]).y
+				(position.y + 15 * this.direction ===
+					this.snake.getPosition(this.snake.body[1]).y || (this.wasYUpdated && this.updateDirection === -this.direction))
 			) {
 				this.direction *= -1;
 			}
@@ -257,8 +270,8 @@
 			const position = this.snake.getPosition(this.snake.head);
 			if (
 				this.snake.body.length > 1 &&
-				position.x + 15 * this.direction ===
-					this.snake.getPosition(this.snake.body[1]).x
+				(position.x + 15 * this.direction ===
+					this.snake.getPosition(this.snake.body[1]).x || (this.wasXUpdated && this.updateDirection === -this.direction))
 			) {
 				this.direction *= -1;
 			}
@@ -274,18 +287,30 @@
 				case position.x === this.frame.width - 15 && this.direction > 0:
 					this.snake.position.x = 0;
 					switchSides();
+					this.wasXUpdated = true
+					this.updateDirection = this.direction
 					break;
 				case position.x === 0 && this.direction < 0:
 					this.snake.position.x = this.frame.width - 15;
 					switchSides();
+					this.wasXUpdated = true
+					this.updateDirection = this.direction
 					break;
 				case position.y === this.frame.height - 15 && this.direction > 0:
 					this.snake.position.y = 0;
 					switchSides();
+					this.wasYUpdated = true
+					this.updateDirection = this.direction
 					break;
 				case position.y === 0 && this.direction < 0:
 					this.snake.position.y = this.frame.height - 15;
 					switchSides();
+					this.wasYUpdated = true
+					this.updateDirection = this.direction
+					break;
+				default:
+					this.wasXUpdated = false
+					this.wasYUpdated = false
 					break;
 			}
 		}

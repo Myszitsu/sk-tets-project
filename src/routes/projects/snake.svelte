@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { SnakeGame } from '$lib/projects/snake.svelte';
 	import MediaQuery from '$lib/helpers/media-query.svelte';
-import { fly } from 'svelte/transition';
+	import { fly } from 'svelte/transition';
 	let frame: HTMLDivElement;
 	let game: SnakeGame;
 
@@ -13,15 +13,24 @@ import { fly } from 'svelte/transition';
 
 	function movementHandler(event: KeyboardEvent | Event) {
 		if (
-			(event instanceof KeyboardEvent &&
-				event.key.includes('Arrow') &&
-				game.movement.isMovementFinished) ||
-			(event.target instanceof HTMLButtonElement &&
-				event.target.dataset.event &&
-				game.movement.isMovementFinished)
+			event instanceof KeyboardEvent &&
+			event.key.includes('Arrow') &&
+			game.movement.isMovementFinished &&
+			event.key !== game.movement.eventIdentifier &&
+			!game.movement.isPaused
 		) {
 			game.movement.isMovementFinished = false;
-			game.movement.movementHandler(event, );
+			game.movement.movementHandler(event);
+		}
+		if (
+			event.target instanceof HTMLButtonElement &&
+			event.target.dataset.event &&
+			game.movement.isMovementFinished &&
+			event.target.dataset.event !== game.movement.eventIdentifier &&
+			!game.movement.isPaused
+		) {
+			game.movement.isMovementFinished = false;
+			game.movement.movementHandler(event);
 		}
 	}
 
@@ -32,11 +41,14 @@ import { fly } from 'svelte/transition';
 </script>
 
 <svelte:head>
-   <title>Snake</title>
+	<title>Snake</title>
 </svelte:head>
 <svelte:window on:resize={resizeSnake} on:keydown={movementHandler} />
-<section in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
-out:fly={{ duration: 400, x: window.innerWidth }} class="section section--snake">
+<section
+	in:fly={{ delay: 200, duration: 300, x: -window.innerWidth }}
+	out:fly={{ duration: 400, x: window.innerWidth }}
+	class="section section--snake"
+>
 	<header>
 		<button
 			on:click={() => {
@@ -70,12 +82,14 @@ out:fly={{ duration: 400, x: window.innerWidth }} class="section section--snake"
 			<button
 				on:click={movementHandler}
 				class="arrow arrow--left"
-				data-event="ArrowLeft" aria-label="Arrow Left"><i class="fas fa-arrow-left" /></button
+				data-event="ArrowLeft"
+				aria-label="Arrow Left"><i class="fas fa-arrow-left" /></button
 			>
 			<button
 				on:click={movementHandler}
 				class="arrow arrow--down"
-				data-event="ArrowDown" aria-label="Arrow Down"><i class="fas fa-arrow-down" /></button
+				data-event="ArrowDown"
+				aria-label="Arrow Down"><i class="fas fa-arrow-down" /></button
 			>
 		</div>
 		<MediaQuery query="(min-width: 40rem)" let:matches>
@@ -87,12 +101,14 @@ out:fly={{ duration: 400, x: window.innerWidth }} class="section section--snake"
 			<button
 				on:click={movementHandler}
 				class="arrow arrow--up"
-				data-event="ArrowUp" aria-label="Arrow Up"><i class="fas fa-arrow-up" /></button
+				data-event="ArrowUp"
+				aria-label="Arrow Up"><i class="fas fa-arrow-up" /></button
 			>
 			<button
 				on:click={movementHandler}
 				class="arrow arrow--right"
-				data-event="ArrowRight" aria-label="Arrow Right"><i class="fas fa-arrow-right" /></button
+				data-event="ArrowRight"
+				aria-label="Arrow Right"><i class="fas fa-arrow-right" /></button
 			>
 		</div>
 	</footer>
@@ -182,9 +198,9 @@ out:fly={{ duration: 400, x: window.innerWidth }} class="section section--snake"
 		color: var(--secondary-light);
 	}
 
-   button {
-      cursor: pointer;
-   }
+	button {
+		cursor: pointer;
+	}
 
 	@media (min-width: 40rem) {
 		.info {
@@ -195,7 +211,7 @@ out:fly={{ duration: 400, x: window.innerWidth }} class="section section--snake"
 		}
 
 		footer {
-         justify-content: space-between;
+			justify-content: space-between;
 			.controls {
 				width: 20%;
 				flex-direction: column;
