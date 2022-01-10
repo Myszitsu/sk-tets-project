@@ -3,7 +3,10 @@
 	import Nav from '$lib/ui/nav.svelte';
 	import { onMount } from 'svelte';
 
-	onMount(setContainerSize);
+	onMount(() => {
+		setContainerSize()
+		window.addEventListener('orientationchange', setContainerSize)
+	});
 
 	function setContainerSize() {
 		const svelteContainer = window.document.getElementById('svelte');
@@ -11,7 +14,7 @@
 	}
 </script>
 
-<svelte:window on:resize="{setContainerSize}" />
+<svelte:window on:resize="{setContainerSize}"/>
 <Nav />
 <main class="main">
 	<slot />

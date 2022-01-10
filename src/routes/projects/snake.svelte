@@ -9,6 +9,9 @@
 	onMount(() => {
 		game = new SnakeGame(frame);
 		game.movement.movementSpeed = 60;
+		screen.orientation.addEventListener('change', () => {
+			location.reload()
+		})
 	});
 
 	function movementHandler(event: KeyboardEvent | Event) {
