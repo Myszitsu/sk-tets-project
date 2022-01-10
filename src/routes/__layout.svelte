@@ -4,17 +4,12 @@
 	import { beforeUpdate, onMount } from 'svelte';
 	let main: HTMLElement
 
-	beforeUpdate(() => {
-		setContainerHeight()
-	})
-
 	onMount(() => {
 		setContainerHeight()
 	})
 
 	function setContainerHeight() {
-		const container = document.getElementById('svelte')
-		container.style.minHeight = `${window.innerHeight}px`
+		main.style.minHeight = `${window.innerHeight}px`
 	}
 </script>
 
