@@ -1,21 +1,22 @@
 <script lang="ts">
 	import '../styles/global.scss';
 	import Nav from '$lib/ui/nav.svelte';
-	import { beforeUpdate, onMount } from 'svelte';
-	let main: HTMLElement
+	import { beforeUpdate } from 'svelte';
 
-	onMount(() => {
-		setContainerHeight()
+	beforeUpdate(() => {
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	})
 
 	function setContainerHeight() {
-		main.style.minHeight = `${window.innerHeight}px`
+		let vh = window.innerHeight * 0.01;
+		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	}
 </script>
 
 <svelte:window on:resize="{setContainerHeight}"/>
 <Nav />
-<main bind:this={main} class="main">
+<main class="main">
 	<slot />
 </main>
 

@@ -35,6 +35,7 @@ body {
    display: flex;
    justify-content: center;
    position: relative;
+   min-height: calc(var(--vh, 1vh) * 100);
 }
 
 .section {
