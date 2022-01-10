@@ -1,15 +1,16 @@
 <script lang="ts">
 	import '../styles/global.scss';
 	import Nav from '$lib/ui/nav.svelte';
-	import { beforeUpdate, onMount } from 'svelte';
+	import { beforeUpdate } from 'svelte';
 	let main: HTMLElement
 
-	onMount(() => {
-		setContainerSize()
-	});
+	beforeUpdate(() => {
+		setContainerHeight()
+	})
 
-	function setContainerSize() {
-		main.style.minHeight = `${window.innerHeight}px`;
+	function setContainerHeight() {
+		const container = document.getElementById('svelte')
+		container.style.minHeight = `${window.innerHeight}px`
 	}
 </script>
 
