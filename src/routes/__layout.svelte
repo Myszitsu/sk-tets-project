@@ -1,10 +1,14 @@
 <script lang="ts">
 	import '../styles/global.scss';
 	import Nav from '$lib/ui/nav.svelte';
-	import { beforeUpdate } from 'svelte';
+	import { beforeUpdate, onMount } from 'svelte';
 	let main: HTMLElement
 
 	beforeUpdate(() => {
+		setContainerHeight()
+	})
+
+	onMount(() => {
 		setContainerHeight()
 	})
 
@@ -14,7 +18,7 @@
 	}
 </script>
 
-<svelte:window on:resize="{setContainerSize}"/>
+<svelte:window on:resize="{setContainerHeight}"/>
 <Nav />
 <main bind:this={main} class="main">
 	<slot />
