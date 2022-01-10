@@ -5,10 +5,9 @@
 
 	onMount(() => {
 		setContainerSize()
-		window.addEventListener('orientationchange', setContainerSize)
 	});
 
-	function setContainerSize() {
+	function setContainerSize(event? : Event) {
 		const svelteContainer = window.document.getElementById('svelte');
 		svelteContainer.style.minHeight = `${window.innerHeight}px`;
 	}

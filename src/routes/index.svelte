@@ -84,7 +84,7 @@
 			{/if}</MediaQuery
 		>
 	</div>
-	<img src="portrait-svelte.png" alt="" />
+	<img src="portrait-svelte.png" alt="prtrait graphic" />
 </section>
 
 <style lang="scss">
