@@ -3,15 +3,24 @@
 	import { SnakeGame } from '$lib/projects/snake.svelte';
 	import MediaQuery from '$lib/helpers/media-query.svelte';
 	import { fly } from 'svelte/transition';
+	import { spy } from '$lib/stores/spy-store.svelte';
 	let frame: HTMLDivElement;
 	let game: SnakeGame;
 
 	onMount(() => {
 		game = new SnakeGame(frame);
 		game.movement.movementSpeed = 60;
+		
 		screen.orientation.addEventListener('change', () => {
 			location.reload()
 		})
+
+		spy.update(items => {
+			for (const key in items) {
+				items[key] = false;
+			}
+			return Object.assign(items);
+		});
 	});
 
 	function movementHandler(event: KeyboardEvent | Event) {

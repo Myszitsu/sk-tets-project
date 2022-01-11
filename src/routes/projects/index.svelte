@@ -3,16 +3,7 @@
 	import { fly } from 'svelte/transition';
 	import { spy } from '$lib/stores/spy-store.svelte';
 	import Headline from '$lib/ui/headline.svelte';
-	import { onDestroy, onMount } from 'svelte';
-
-onDestroy(() => {
-		spy.update(items => {
-			for (const key in items) {
-				key === 'isProjectsActive'? items[key] = false : false
-			}
-			return Object.assign(items);
-		});
-	})	
+	import { onMount } from 'svelte';
 
 	onMount(() => {
 		spy.update(items => {
