@@ -160,7 +160,7 @@
 			padding: 32px;
 			justify-self: center;
 			align-self: center;
-			width: 100%;
+			width: 93%;
 			object-fit: scale-down;
 		}
 	}
