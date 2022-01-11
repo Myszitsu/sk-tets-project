@@ -8,7 +8,7 @@
 onDestroy(() => {
 		spy.update(items => {
 			for (const key in items) {
-				items[key] = false;
+				key === 'isProjectsActive'? items[key] = false : false
 			}
 			return Object.assign(items);
 		});
