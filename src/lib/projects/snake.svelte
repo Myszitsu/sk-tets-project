@@ -40,8 +40,8 @@
 			x: number;
 			y: number;
 		};
-		constructor(public frame: SnakeFrame, public frameDiv: HTMLDivElement) {
-			this.head = this.frameDiv.querySelector('#head') as HTMLDivElement;
+		constructor(public frame: SnakeFrame) {
+			this.head = this.frame.frame.querySelector('#head') as HTMLDivElement;
 			this.head.classList.add('snake');
 			this.body = [this.head];
 			this.position = {
@@ -68,17 +68,18 @@
 				this.setNewHeadPosition();
 			}
 
+			console.log(bodyPart.style.transform.split(',')[1]);
 			return {
 				x: +bodyPart.style.transform
 					.split('(')[1]
 					.slice(0, -1)
 					.split(',')[0]
 					.slice(0, -2),
-				y: +bodyPart.style.transform
+				y: bodyPart.style.transform.split(',')[1] ? +bodyPart.style.transform
 					.split('(')[1]
 					.slice(0, -1)
 					.split(',')[1]
-					.slice(0, -2),
+					.slice(0, -2) : 0,
 			};
 		}
 
@@ -94,7 +95,7 @@
 			newSnakePart.style.transform =
 				this.body[this.body.length - 1].style.transform;
 
-			this.frameDiv.append(newSnakePart);
+			this.frame.frame.append(newSnakePart);
 			this.body.push(newSnakePart);
 		}
 	}
@@ -105,9 +106,8 @@
 		constructor(
 			public frame: SnakeFrame,
 			public snake: SnakeBody,
-			public frameDiv: HTMLDivElement
 		) {
-			this.fruit = this.frameDiv.querySelector('#apple') as HTMLDivElement;
+			this.fruit = this.frame.frame.querySelector('#apple') as HTMLDivElement;
 			this.fruit.classList.add('apple');
 		}
 
@@ -126,10 +126,10 @@
 		setAppleCount(reset?: boolean) {
 			if (reset) {
 				this.appleCount = 0;
-				this.frameDiv.querySelector('#h2').textContent = 'APPLES : 0';
+				this.frame.frame.querySelector('#h2').textContent = 'APPLES : 0';
 				return;
 			}
-			this.frameDiv.querySelector('#h2').textContent = `APPLES : ${++this
+			this.frame.frame.querySelector('#h2').textContent = `APPLES : ${++this
 				.appleCount}`;
 		}
 	}
@@ -329,8 +329,8 @@
 		constructor(public frameDiv: HTMLDivElement) {
 			this.frame = new SnakeFrame(this.frameDiv);
 			this.frame.setSize();
-			this.snake = new SnakeBody(this.frame, frameDiv);
-			this.apple = new Apple(this.frame, this.snake, frameDiv);
+			this.snake = new SnakeBody(this.frame);
+			this.apple = new Apple(this.frame, this.snake);
 			this.apple.setNewPosition();
 			this.movement = new SnakeMovement(this.frame, this.snake, this.apple);
 		}
