@@ -22,7 +22,7 @@
 			</li>
 			<li class:spy={$spy.isProjectsActive}>
 				<a href="/projects" aria-label="projects"
-					><i class="fas fa-project-diagram" /></a
+					><i class="fas fa-folder-open"></i></a
 				>
 			</li>
 		</ul>

@@ -30,6 +30,9 @@
 		<ProjectGrid title={'Snake'} imgAlt={'snake ilustration'} href={'/projects/snake'} githubHref={'https://github.com/Myszitsu/snake-typescript-oop'} imgURL='https://cdn.pixabay.com/photo/2020/06/28/05/30/jesus-5347929_960_720.jpg'>
 			This is a snake minigame written in TypeScript with Class structure. The component is scalable and can use either arrows keys or buttons to navigate. Follow the link below for it's own GitHub's repository.
 		</ProjectGrid>
+		<ProjectGrid title={'Movies'} imgAlt={'cinema ilustration'} href={'https://myszitsu-movies.vercel.app/'} githubHref={'https://github.com/Myszitsu/movies-app'} imgURL='https://cdn.pixabay.com/photo/2019/04/24/21/55/cinema-4153289_960_720.jpg'>
+			Movies is an app for browsing films build with Angular 13. I use <a target="__blank" href="https://www.themoviedb.org">themoviedb</a> as an API and PrimeNg for some components. It's still under development, but basic functionalities are already implemented.
+		</ProjectGrid>
 		<ProjectGrid />
 		<ProjectGrid />
 		<ProjectGrid />

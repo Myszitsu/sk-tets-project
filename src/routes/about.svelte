@@ -70,12 +70,10 @@
 				<p>
 					I have good understanding of the basics of HTML5, CSS3, JavaScript &
 					TypeScript, with some more advanced concepts like closures, testing or
-					Web Components & Stencil.js on the way.
+					Web Components & Stencil.js on the way. By learning Svelte I absorbed the concepts of component-base approach to building websites, routing and stores/services.
 				</p>
 				<p>
-					Currently I'm exploring Svelte to get some understanding of
-					component-base approach to building websites. Vue, React or Angular
-					will be my next step in this journey.
+					Currently I'm exploring Angular to get better understading of how to build more complex applications and work with API & backend data more efficiently, but Vue, React and Node.js are on my target as well.
 				</p>
 			</main>
 		</AboutCard>
@@ -144,7 +142,7 @@
 			<div class="graphics">
 				<i class="fas fa-tools" aria-label="under construction"></i>
 				<div class="icons web">
-					<a href="/projects" aria-label="projects"><i class="fas fa-project-diagram"></i></a>
+					<a href="/projects" aria-label="projects"><i class="fas fa-folder-open"></i></a>
 					<a href="https://codepen.io/Myszitsu/" target="__blank" aria-label="codpen profile"><i class="fab fa-codepen"></i></a>
 					<a href="https://github.com/Myszitsu/sk-tets-project" target="__blank" aria-label="github-link"><i class="fab fa-github" /></a>
 				</div>
