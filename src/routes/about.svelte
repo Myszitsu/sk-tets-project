@@ -69,11 +69,10 @@
 			<main slot="main">
 				<p>
 					I have good understanding of the basics of HTML5, CSS3, JavaScript &
-					TypeScript, with some more advanced concepts like closures, testing or
-					Web Components & Stencil.js on the way. By learning Svelte I absorbed the concepts of component-base approach to building websites, routing and stores/services.
+					TypeScript, with some more advanced concepts like testing or Web Components on the way. By learning Svelte I absorbed the concepts of component-base approach to building websites, routing and stores/services.
 				</p>
 				<p>
-					Currently I'm exploring Angular to get better understading of how to build more complex applications and work with API & backend data more efficiently, but Vue, React and Node.js are on my target as well.
+					Currently I'm exploring Angular to get better understading of how to build complex applications and work with API & backend data more efficiently, but Vue, React and Node.js are on my target as well.
 				</p>
 			</main>
 		</AboutCard>
