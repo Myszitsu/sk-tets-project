@@ -96,7 +96,7 @@
 				<div class="icons">
 					<i class="fab fa-figma" aria-label="figma" />
 					<i class="fab fa-git-alt" aria-label="git" />
-					<a href="https://github.com/Myszitsu" target="__blank" aria-label="github link"><i class="fab fa-github" /></a>
+					<a href="https://github.com/domchrz" target="__blank" aria-label="github link"><i class="fab fa-github" /></a>
 				</div>
 			</div>
 			<main slot="main">
